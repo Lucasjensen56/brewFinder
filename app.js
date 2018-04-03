@@ -67,15 +67,7 @@ $("#searchButton").on("click", function(e) {
 
 
 
-
-
-
-
-
-
-
-
-
+//function that converts miles into meters;
 
 
   // On Click Functions
