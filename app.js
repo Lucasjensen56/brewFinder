@@ -84,9 +84,6 @@ $(document).ready(function(){
           colLeft.append(breweryImg)
 
 
-<<<<<<< HEAD
-//function that converts miles into meters;
-=======
           // Center Column Elements
           let rating = $("<p>").attr("id", 'rating')
           let cost = $("<p>").attr("id", 'cost')
@@ -125,7 +122,6 @@ $(document).ready(function(){
       });
 
     })
->>>>>>> da8ef34f21b7c073cca5b6679c71db7b8a38adc2
 
   });
 
