@@ -31,9 +31,7 @@ $(document).ready(function(){
 $("#li1, #li2, #li3, #li4").on('click', function(){
   let userRadius = $(this).data("value");
   console.log(milesToMeters(userRadius));
- 
-
-});
+ });
 
 
 
