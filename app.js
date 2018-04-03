@@ -21,6 +21,18 @@ $(document).ready(function(){
   // Parallax Function
   $('.parallax').parallax();
 
+//use radius location to search
+
+$("#li1, #li2, #li3, #li4").on('click', function(){
+  let userRadius = $(this).data("value");
+
+  console.log(userRadius);
+
+});
+
+
+
+
   // On Click function for Specified Location
   $("#searchButton").on("click", function(e) {
     event.preventDefault();
@@ -28,7 +40,7 @@ $(document).ready(function(){
     //catches information from search field. 
     let searchTitle = $("#searchField").val();
     let codedSearchTitle = encodeURIComponent(searchTitle);
-    console.log(codedSearchTitle)
+    
 
     //attaches User search result to the https address required by googlemaps api
     let userPreLimSearch = "https://maps.googleapis.com/maps/api/geocode/json?address="+ codedSearchTitle +"&key=AIzaSyBSnJtTqZp2Nzg7w1o1rF19y2Eic3IuhCQ"
