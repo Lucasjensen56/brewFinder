@@ -17,11 +17,15 @@
 
     opacity: 29%;
     color: white;
+
+    text-shadow: 4px 4px 8px #000000;
+
 }
 
 
 #breweryElement
 {
+    max-width: 1280px;
     width: auto;
 
     background-color: rgba(157, 157, 51, .7);
@@ -45,6 +49,7 @@
 {
     width: 150px;
 }
+
 
 .brewery-img
 {
