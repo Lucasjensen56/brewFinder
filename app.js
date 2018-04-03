@@ -11,12 +11,17 @@ $(document).ready(function(){
   let fetchUrl;
   let userLatitude;
   let userLongitude;
-
+  let meterConversion;
+  let mileConversion;
   // General Use Function
   function milesToMeters (miles){
     meterConversion = miles * 1609.34;
     return meterConversion;
   };
+  function metersToMiles (meters){
+    mileConversion = meters * 0.000621371;
+    return mileConversion;
+  }
 
   // Parallax Function
   $('.parallax').parallax();
@@ -25,8 +30,8 @@ $(document).ready(function(){
 
 $("#li1, #li2, #li3, #li4").on('click', function(){
   let userRadius = $(this).data("value");
-
-  console.log(userRadius);
+  console.log(milesToMeters(userRadius));
+ 
 
 });
 
