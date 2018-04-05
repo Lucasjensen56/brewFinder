@@ -11,6 +11,8 @@ $(document).ready(function(){
   let fetchUrl;
   let userLat;
   let userLng;
+  //Global variabel created to pass the product of milesToMeters function
+  let meterConversion;
 
   // General Use Function
   function milesToMeters (miles){
@@ -88,8 +90,18 @@ $(document).ready(function(){
     event.preventDefault();
 
     // Removes previously Viewed Breweries
-    $("#breweryElement").empty()
+    $("#breweryElement").empty();
 
+    //captures string from Enter Miles Radius box upon search click then converts from string to integer
+    let mileRadiusString = $("#icon_prefix").val();
+    let milesRadiusInt = parseInt(mileRadiusString);
+      if (isNaN(milesRadiusInt)) {
+        milesToMeters(5);
+        console.log(meterConversion);
+    } else {
+      milesToMeters(milesRadiusInt);
+      console.log(meterConversion);
+    }
     //catches information from search field. 
     let searchTitle = $("#searchField").val();
     let codedSearchTitle = encodeURIComponent(searchTitle);
