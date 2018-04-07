@@ -12,12 +12,12 @@ $(document).ready(function(){
   let userLat;
   let userLng;
   //Global variabel created to pass the product of milesToMeters function
-  let meterConversion;
 
+  let meters;
   // General Use Function
   function milesToMeters (miles){
-    meterConversion = miles * 1609.34;
-    return meterConversion;
+      return Math.floor( miles * 1609.34);
+     
   };
 
   function bizIteration (array) {
@@ -96,12 +96,16 @@ $(document).ready(function(){
     let mileRadiusString = $("#icon_prefix").val();
     let milesRadiusInt = parseInt(mileRadiusString);
       if (isNaN(milesRadiusInt)) {
-        milesToMeters(5);
-        console.log(meterConversion);
+       meters = milesToMeters(5);
+       console.log(meters);
+    
     } else {
-      milesToMeters(milesRadiusInt);
-      console.log(meterConversion);
+      
+        milesToMeters(milesRadiusInt);
+       meters  = milesToMeters(milesRadiusInt);
+        console.log(meters);
     }
+    console.log(meters);
     //catches information from search field. 
     let searchTitle = $("#searchField").val();
     let codedSearchTitle = encodeURIComponent(searchTitle);
@@ -120,7 +124,7 @@ $(document).ready(function(){
       userLng = response.results[0].geometry.location.lng;
 
       // Start of Geolocation fucntioN
-      let fetchUrl = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=breweries&latitude=${userLat}&longitude=${userLng}&limit=10`
+      let fetchUrl = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=breweries&latitude=${userLat}&longitude=${userLng}&limit=10&radius=${meters}`
 
       let myHeaders = new Headers();
       myHeaders.append("Authorization", "Bearer " + apiKey);
@@ -144,7 +148,18 @@ $(document).ready(function(){
 
   // On Click Function for Current Location
   $("#current-location").on("click", function () {
-
+   
+   //captures string from Enter Miles Radius box upon search click then converts from string to integer
+   let mileRadiusString = $("#icon_prefix").val();
+   let milesRadiusInt = parseInt(mileRadiusString);
+     if (isNaN(milesRadiusInt)) {
+      meters = milesToMeters(5);
+       console.log(meters);
+   } else {
+    meters = milesToMeters(milesRadiusInt);
+     
+   }
+    console.log(meters);
     // Removes previously Viewed Breweries
     $("#breweryElement").empty()
 
@@ -156,7 +171,7 @@ $(document).ready(function(){
       userLng = position.coords.longitude
 
       // Changes the fetch URL
-      fetchUrl = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=breweries&latitude=${userLat}&longitude=${userLng}&limit=10`
+      fetchUrl = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=breweries&latitude=${userLat}&longitude=${userLng}`
 
       // Creates the headers class object that holds the API key
       let myHeaders = new Headers();
