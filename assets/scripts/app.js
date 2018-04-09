@@ -145,7 +145,7 @@ $(document).ready(function() {
     
     // On Click function for Specified Location
     $("#searchButton").on("click", function(e) {
-        event.preventDefault();
+        e.preventDefault();
 
         miles = parseInt($("#milesRadius").val())
         // console.log("radius: " + miles + " miles");
